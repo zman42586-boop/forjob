@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#5b5cf0" />
+  <meta name="description" content="手机优先的个人秋招投递管理看板" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="style.css" />
+  <title>秋招投递看板</title>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">2027 秋招</p>
+        <h1>投递看板</h1>
+      </div>
+      <div class="header-actions">
+        <button class="sync-button" id="open-sync" type="button">同步</button>
+        <button class="add-button" id="open-add" type="button" aria-label="添加岗位">＋</button>
+      </div>
+    </header>
+
+    <section class="summary" aria-label="投递概览">
+      <article><strong id="total-count">0</strong><span>已记录</span></article>
+      <article><strong id="active-count">0</strong><span>进行中</span></article>
+      <article><strong id="offer-count">0</strong><span>Offer</span></article>
+    </section>
+
+    <section class="filters" aria-label="筛选岗位">
+      <button class="filter is-active" type="button" data-filter="all">全部</button>
+      <button class="filter" type="button" data-filter="active">进行中</button>
+      <button class="filter" type="button" data-filter="offer">Offer</button>
+      <button class="filter" type="button" data-filter="ended">已结束</button>
+    </section>
+
+    <section class="job-list" id="job-list" aria-live="polite"></section>
+
+    <section class="empty-state" id="empty-state" hidden>
+      <div class="empty-icon">⌁</div>
+      <h2>先添加一个目标岗位</h2>
+      <p>填入企业、岗位和招聘链接，之后从这里统一追踪进度。</p>
+      <button class="primary-button" id="empty-add" type="button">添加岗位</button>
+    </section>
+  </main>
+
+  <dialog id="job-dialog">
+    <form id="job-form" method="dialog">
+      <div class="dialog-heading">
+        <div><p class="eyebrow">岗位信息</p><h2 id="dialog-title">添加岗位</h2></div>
+        <button class="close-button" id="close-dialog" type="button" aria-label="关闭">×</button>
+      </div>
+      <input id="job-id" type="hidden" />
+      <label>企业名称<input id="company" required maxlength="40" placeholder="例如：字节跳动" /></label>
+      <label>岗位名称<input id="role" required maxlength="60" placeholder="例如：后端开发工程师" /></label>
+      <label>招聘链接<input id="url" type="url" placeholder="https://...（可不填）" /></label>
+      <div class="form-grid">
+        <label>投递状态<select id="status"></select></label>
+        <label>当前阶段<select id="stage"></select></label>
+      </div>
+      <label>备注<textarea id="notes" rows="3" maxlength="300" placeholder="例如：8 月 12 日笔试"></textarea></label>
+      <div class="dialog-actions">
+        <button class="delete-button" id="delete-job" type="button" hidden>删除</button>
+        <button class="primary-button" type="submit">保存</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="sync-dialog">
+    <form id="sync-form" method="dialog">
+      <div class="dialog-heading">
+        <div><p class="eyebrow">仅你自己设置</p><h2>共享数据同步</h2></div>
+        <button class="close-button" id="close-sync" type="button" aria-label="关闭">×</button>
+      </div>
+      <p class="sync-intro">连接后，你保存的岗位会同步到公开网页；朋友刷新页面即可看到。令牌只保存在当前浏览器。</p>
+      <label>GitHub 仓库<input id="repository" required value="zman42586-boop/forjob" placeholder="用户名/仓库名" /></label>
+      <label>GitHub 专用令牌<input id="github-token" type="password" autocomplete="off" placeholder="粘贴令牌（朋友不需要）" /></label>
+      <p class="sync-state" id="sync-state">尚未连接共享数据。</p>
+      <div class="dialog-actions">
+        <button class="delete-button" id="disconnect" type="button" hidden>断开</button>
+        <button class="primary-button" type="submit">保存并同步</button>
+      </div>
+    </form>
+  </dialog>
+
+  <template id="job-template">
+    <article class="job-card">
+      <div class="card-topline">
+        <div><p class="company"></p><h2 class="role"></h2></div>
+        <button class="edit-button" type="button">编辑</button>
+      </div>
+      <div class="badges"><span class="status-badge"></span><span class="stage-label"></span></div>
+      <div class="progress" aria-label="招聘流程"><div class="progress-fill"></div></div>
+      <div class="steps"></div>
+      <p class="notes"></p>
+      <a class="job-link" target="_blank" rel="noopener noreferrer">打开招聘页面 <span>↗</span></a>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
