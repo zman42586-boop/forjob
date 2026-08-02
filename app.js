@@ -28,7 +28,10 @@ async function save() {
   const current = await fetch(endpoint, { headers });
   const previous = current.ok ? await current.json() : null;
   const response = await fetch(endpoint, { method: 'PUT', headers: { ...headers, 'Content-Type': 'application/json' }, body: JSON.stringify({ message: '更新投递看板数据', content: base64Encode(JSON.stringify(jobs, null, 2)), sha: previous?.sha }) });
-  if (!response.ok) throw new Error('同步失败');
+  if (!response.ok) {
+    const detail = await response.json().catch(() => ({}));
+    throw new Error(detail.message || `GitHub 返回 HTTP ${response.status}`);
+  }
 }
 function populateSelects() {
   $('#stage').innerHTML = stages.map(value => `<option>${value}</option>`).join('');
@@ -97,7 +100,7 @@ $('#sync-form').addEventListener('submit', async event => {
   localStorage.setItem(SYNC_KEY, JSON.stringify({ repository, token }));
   $('#sync-state').textContent = '正在同步…';
   try { await save(); $('#sync-state').textContent = '已同步，朋友刷新页面即可看到。'; setTimeout(() => syncDialog.close(), 700); }
-  catch { localStorage.removeItem(SYNC_KEY); $('#sync-state').textContent = '同步失败：请检查令牌权限和仓库名称。'; }
+  catch (error) { localStorage.removeItem(SYNC_KEY); $('#sync-state').textContent = `同步失败：${error.message}`; }
 });
 $('#disconnect').addEventListener('click', () => { localStorage.removeItem(SYNC_KEY); updateSyncPanel(); });
 $('#job-form').addEventListener('submit', async event => {
@@ -105,10 +108,10 @@ $('#job-form').addEventListener('submit', async event => {
   const id = $('#job-id').value;
   const job = { id: id || crypto.randomUUID(), company: $('#company').value.trim(), role: $('#role').value.trim(), url: $('#url').value.trim(), status: $('#status').value, stage: $('#stage').value, notes: $('#notes').value.trim() };
   jobs = id ? jobs.map(item => item.id === id ? job : item) : [job, ...jobs];
-  try { await save(); closeEditor(); render(); } catch { alert('本机已保存，但同步失败。请检查“同步”设置。'); closeEditor(); render(); }
+  try { await save(); closeEditor(); render(); } catch (error) { alert(`本机已保存，但同步失败：${error.message}`); closeEditor(); render(); }
 });
 $('#delete-job').addEventListener('click', async () => {
-  if (confirm('确定删除这个岗位吗？')) { jobs = jobs.filter(job => job.id !== $('#job-id').value); try { await save(); } catch { alert('本机已删除，但同步失败。'); } closeEditor(); render(); }
+  if (confirm('确定删除这个岗位吗？')) { jobs = jobs.filter(job => job.id !== $('#job-id').value); try { await save(); } catch (error) { alert(`本机已删除，但同步失败：${error.message}`); } closeEditor(); render(); }
 });
 document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => { filter = button.dataset.filter; document.querySelector('.filter.is-active').classList.remove('is-active'); button.classList.add('is-active'); render(); }));
 populateSelects(); render(); loadSharedData();
