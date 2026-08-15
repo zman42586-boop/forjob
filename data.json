@@ -1,5 +1,14 @@
 [
   {
+    "id": "2e9b4861-2ee7-4a33-aa55-3f27eb200c93",
+    "company": "vivo",
+    "role": "后端开发工程师",
+    "url": "https://hr-campus.vivo.com/personal/deliveryRecord",
+    "status": "进行中",
+    "stage": "已投递",
+    "notes": ""
+  },
+  {
     "id": "a6ff160a-3873-4443-b969-ee41697536a4",
     "company": "oppo",
     "role": "AI Agent 研发工程师（研发效能方向）",
