@@ -1,5 +1,14 @@
 [
   {
+    "id": "8e18d4de-52ec-4c36-9e61-56bef24948ea",
+    "company": "科大讯飞",
+    "role": "ai产品经理",
+    "url": "https://iflytek.zhiye.com/personal/deliveryRecord",
+    "status": "进行中",
+    "stage": "测评",
+    "notes": ""
+  },
+  {
     "id": "cadd8733-0897-4e35-893a-65d50010d60a",
     "company": "滴滴",
     "role": "后端研发工程师",
