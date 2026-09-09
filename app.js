@@ -11,6 +11,38 @@ const syncDialog = $('#sync-dialog');
 function getSyncConfig() { return JSON.parse(localStorage.getItem(SYNC_KEY) || 'null'); }
 function base64Encode(value) { return btoa(String.fromCharCode(...new TextEncoder().encode(value))); }
 function base64Decode(value) { return new TextDecoder().decode(Uint8Array.from(atob(value.replace(/\n/g, '')), char => char.charCodeAt(0))); }
+function normalizeUrl(value) {
+  try {
+    const url = new URL(value);
+    if (!['http:', 'https:'].includes(url.protocol)) return '';
+    [...url.searchParams.keys()].forEach(key => {
+      if (/^(utm_.+|share_token|recommendCode)$/i.test(key)) url.searchParams.delete(key);
+    });
+    return url.toString();
+  } catch { return ''; }
+}
+function sameJob(left, right) {
+  const leftUrl = normalizeUrl(left.url);
+  const rightUrl = normalizeUrl(right.url);
+  if (leftUrl && rightUrl && leftUrl === rightUrl) return true;
+  if (!left.company || !left.role || !right.company || !right.role) return false;
+  return left.company.trim().toLowerCase() === right.company.trim().toLowerCase()
+    && left.role.trim().toLowerCase() === right.role.trim().toLowerCase();
+}
+function readImport() {
+  if (!location.hash.startsWith('#import=')) return null;
+  const encoded = location.hash.slice('#import='.length);
+  history.replaceState(null, '', `${location.pathname}${location.search}`);
+  try {
+    if (encoded.length > 12000) return null;
+    const payload = JSON.parse(base64Decode(decodeURIComponent(encoded)));
+    const company = String(payload.company || '').trim().slice(0, 40);
+    const role = String(payload.role || '').trim().slice(0, 60);
+    const url = normalizeUrl(String(payload.url || ''));
+    if (!company && !role && !url) return null;
+    return { company, role, url, status: '进行中', stage: '已投递', notes: '' };
+  } catch { return null; }
+}
 async function loadSharedData() {
   try {
     const response = await fetch(`./data.json?time=${Date.now()}`, { cache: 'no-store' });
@@ -68,16 +100,26 @@ function render() {
   });
   if (jobs.length && !shown.length) list.innerHTML = '<p class="empty-state">这个筛选条件下还没有岗位。</p>';
 }
-function openEditor(job = null) {
-  $('#dialog-title').textContent = job ? '编辑岗位' : '添加岗位';
+function openEditor(job = null, imported = null) {
+  const source = job || imported;
+  $('#dialog-title').textContent = job ? '编辑岗位' : imported ? '确认导入' : '添加岗位';
   $('#job-id').value = job?.id || '';
-  $('#company').value = job?.company || '';
-  $('#role').value = job?.role || '';
-  $('#url').value = job?.url || '';
-  $('#status').value = job?.status || '未投递';
-  $('#stage').value = job?.stage || '未投递';
-  $('#notes').value = job?.notes || '';
+  $('#company').value = source?.company || '';
+  $('#role').value = source?.role || '';
+  $('#url').value = source?.url || '';
+  $('#status').value = source?.status || '未投递';
+  $('#stage').value = source?.stage || '未投递';
+  $('#notes').value = source?.notes || '';
   $('#delete-job').hidden = !job;
+  const importState = $('#import-state');
+  importState.hidden = !imported;
+  if (imported) {
+    const duplicate = jobs.find(item => sameJob(item, imported));
+    importState.classList.toggle('is-warning', Boolean(duplicate));
+    importState.textContent = duplicate
+      ? `看板中可能已有相同岗位：${duplicate.company} · ${duplicate.role}。继续保存会新增一条记录。`
+      : '已从当前招聘页读取信息，请确认后保存。';
+  }
   dialog.showModal();
 }
 function closeEditor() { dialog.close(); }
@@ -114,5 +156,9 @@ $('#delete-job').addEventListener('click', async () => {
   if (confirm('确定删除这个岗位吗？')) { jobs = jobs.filter(job => job.id !== $('#job-id').value); try { await save(); } catch (error) { alert(`本机已删除，但同步失败：${error.message}`); } closeEditor(); render(); }
 });
 document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => { filter = button.dataset.filter; document.querySelector('.filter.is-active').classList.remove('is-active'); button.classList.add('is-active'); render(); }));
-populateSelects(); render(); loadSharedData();
+populateSelects(); render();
+loadSharedData().then(() => {
+  const imported = readImport();
+  if (imported) openEditor(null, imported);
+});
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('./service-worker.js');

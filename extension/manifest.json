@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "投递看板助手",
+  "version": "0.1.0",
+  "description": "从当前招聘页读取企业、岗位和网址，并导入投递看板。",
+  "permissions": ["activeTab", "scripting"],
+  "action": {
+    "default_title": "加入投递看板"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
