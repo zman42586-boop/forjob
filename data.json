@@ -166,9 +166,13 @@
     "company": "虾皮",
     "role": "研发工程师",
     "url": "https://app.mokahr.com/campus_apply/shopee/2962#/candidateHome/applications",
-    "status": "进行中",
+    "status": "已挂",
     "stage": "一面",
-    "notes": ""
+    "notes": "",
+    "nextAction": "",
+    "nextDate": "",
+    "createdAt": "2026-09-09T05:15:14.532Z",
+    "updatedAt": "2026-09-09T05:15:14.532Z"
   },
   {
     "id": "169b1770-2e41-4d04-a9c6-c5243fef9b87",
