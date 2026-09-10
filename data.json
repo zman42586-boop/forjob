@@ -1,5 +1,18 @@
 [
   {
+    "id": "e1358b78-fa53-4582-9807-9d38fc77deb6",
+    "company": "SHEIN校园招聘",
+    "role": "JAVA后端",
+    "url": "https://app.mokahr.com/campus_apply/shein/2932#/job/a42a007c-2283-408e-9981-b812f804007c/campus_apply/thanks?jobId=a42a007c-2283-408e-9981-b812f804007c&codeType=2&applyInfo%5BaimStoreId%5D=&applyInfo%5BrecommendCode%5D=DST8Ak2S&candidateName=%E5%BC%A0%E9%AA%8F%E6%9D%B0&candidateId=801428963",
+    "status": "进行中",
+    "stage": "已投递",
+    "nextAction": "",
+    "nextDate": "",
+    "notes": "",
+    "createdAt": "2026-09-10T14:42:18.674Z",
+    "updatedAt": "2026-09-10T14:42:18.674Z"
+  },
+  {
     "id": "7ed34ccb-2ab9-4881-a96e-e0ee4960d862",
     "company": "同花顺招聘",
     "role": "ai应用开发",
