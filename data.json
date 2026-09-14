@@ -1,5 +1,18 @@
 [
   {
+    "id": "a99f5424-01cf-4e46-8357-9c5dd15f0f35",
+    "company": "bilibili",
+    "role": "后端开发",
+    "url": "https://jobs.bilibili.com/campus/records?token=45f11334-bfb5-41dd-963d-77f91f0bcda8",
+    "status": "进行中",
+    "stage": "已投递",
+    "nextAction": "",
+    "nextDate": "",
+    "notes": "",
+    "createdAt": "2026-09-14T15:05:39.218Z",
+    "updatedAt": "2026-09-14T15:05:39.218Z"
+  },
+  {
     "id": "e52ed4b0-fe77-4908-852a-93110b19c54d",
     "company": "字节跳动",
     "role": "AI后端",
