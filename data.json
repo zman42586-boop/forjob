@@ -1,5 +1,18 @@
 [
   {
+    "id": "e52ed4b0-fe77-4908-852a-93110b19c54d",
+    "company": "字节跳动",
+    "role": "AI后端",
+    "url": "https://jobs.bytedance.com/campus/position/application?external_referral_code=BEGNWJ8",
+    "status": "进行中",
+    "stage": "已投递",
+    "nextAction": "",
+    "nextDate": "",
+    "notes": "",
+    "createdAt": "2026-09-14T08:28:29.325Z",
+    "updatedAt": "2026-09-14T08:28:29.325Z"
+  },
+  {
     "id": "ad7bb6ac-9a35-4956-b4e6-ba6cabac6ee1",
     "company": "携程集团",
     "role": "aiagent",
