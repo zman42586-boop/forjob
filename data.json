@@ -154,9 +154,13 @@
     "company": "滴滴",
     "role": "后端研发工程师",
     "url": "https://app.mokahr.com/campus_apply/didiglobal/96064?recommendCode=DSZEp9r4#/candidateHome/applications",
-    "status": "进行中",
+    "status": "已挂",
     "stage": "已投递",
-    "notes": ""
+    "notes": "",
+    "nextAction": "",
+    "nextDate": "",
+    "createdAt": "2026-09-14T08:22:27.217Z",
+    "updatedAt": "2026-09-14T08:22:27.217Z"
   },
   {
     "id": "93a31341-3fb2-49c5-8d8d-27b3c09423ed",
