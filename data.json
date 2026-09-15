@@ -1,5 +1,18 @@
 [
   {
+    "id": "301dc219-6a7b-43a5-8b37-44e2ab197252",
+    "company": "京东",
+    "role": "后端",
+    "url": "https://campus.jd.com/#/myDeliver?type=present",
+    "status": "进行中",
+    "stage": "已投递",
+    "nextAction": "",
+    "nextDate": "",
+    "notes": "",
+    "createdAt": "2026-09-15T09:47:20.692Z",
+    "updatedAt": "2026-09-15T09:47:20.692Z"
+  },
+  {
     "id": "95554187-849d-4c08-9752-6931b9e40225",
     "company": "网易互娱",
     "role": "AI agent引擎",
