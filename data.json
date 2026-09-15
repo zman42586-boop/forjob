@@ -1,5 +1,18 @@
 [
   {
+    "id": "95554187-849d-4c08-9752-6931b9e40225",
+    "company": "网易互娱",
+    "role": "AI agent引擎",
+    "url": "https://campus.game.163.com/app/personal/apply",
+    "status": "进行中",
+    "stage": "已投递",
+    "nextAction": "",
+    "nextDate": "",
+    "notes": "",
+    "createdAt": "2026-09-15T06:12:52.075Z",
+    "updatedAt": "2026-09-15T06:12:52.075Z"
+  },
+  {
     "id": "a99f5424-01cf-4e46-8357-9c5dd15f0f35",
     "company": "bilibili",
     "role": "后端开发",
