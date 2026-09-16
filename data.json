@@ -1,5 +1,21 @@
 [
   {
+    "id": "e36ec67c-8442-4a52-b747-000563dd9deb",
+    "company": "阿里巴巴",
+    "role": "agent",
+    "industry": "互联网",
+    "base": "杭州",
+    "jobTrack": "其他",
+    "url": "https://campus-talent.alibaba.com/personal/applications",
+    "status": "进行中",
+    "stage": "已投递",
+    "nextAction": "",
+    "nextDate": "",
+    "notes": "",
+    "createdAt": "2026-09-16T11:39:17.139Z",
+    "updatedAt": "2026-09-16T11:39:17.139Z"
+  },
+  {
     "id": "2f2c439e-d858-4da6-b50b-98a633112b46",
     "company": "新华三",
     "role": "java",
