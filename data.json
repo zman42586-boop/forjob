@@ -1,5 +1,21 @@
 [
   {
+    "id": "2f2c439e-d858-4da6-b50b-98a633112b46",
+    "company": "新华三",
+    "role": "java",
+    "industry": "制造业",
+    "base": "深圳、上海",
+    "jobTrack": "其他",
+    "url": "https://career.h3c.com/form/friendly?fromPage=job&CategoryId=2&recruitTypeName=%E6%A0%A1%E5%9B%AD%E6%8B%9B%E8%81%98&IsEditVolunteerOrder=true&choice=1&name=%E5%BC%A0%E9%AA%8F%E6%9D%B0&submissionId=414789625",
+    "status": "进行中",
+    "stage": "已投递",
+    "nextAction": "",
+    "nextDate": "",
+    "notes": "",
+    "createdAt": "2026-09-16T10:34:36.925Z",
+    "updatedAt": "2026-09-16T10:34:36.925Z"
+  },
+  {
     "id": "285712eb-9d56-4528-bda7-eecf8b5c719e",
     "company": "Link联洲招聘官网",
     "role": "后端",
