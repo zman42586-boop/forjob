@@ -4,6 +4,7 @@ const stages = ['未投递', '已投递', '测评', '笔试', '一面', '二面'
 const outcomes = ['已挂', '已拒绝', '已接受'];
 const progressOptions = [...stages, ...outcomes];
 const cities = ['上海', '深圳', '杭州', '苏州', '南京'];
+const baseOptions = [...cities, '深圳、上海'];
 const industries = ['互联网/平台', '智能汽车', '消费电子/智能硬件', '半导体', 'AI/企业软件', '金融科技', '新能源/制造', '其他'];
 const jobTracks = ['AI Agent/大模型', 'AI 应用开发', '后端研发', '产品经理', '通用研发', '其他'];
 const companyIndustries = {
@@ -65,7 +66,11 @@ function inferJobTrack(role = '') {
 }
 
 function getIndustry(job) { return industries.includes(job.industry) ? job.industry : inferIndustry(job.company) || '其他'; }
-function getBase(job) { return cities.includes(job.base) ? job.base : ''; }
+function getBases(job) {
+  const values = Array.isArray(job.base) ? job.base : String(job.base || '').split(/[、,，/]/);
+  return [...new Set(values.map(value => value.trim()).filter(value => cities.includes(value)))];
+}
+function getBase(job) { return getBases(job).join('、'); }
 function getJobTrack(job) { return jobTracks.includes(job.jobTrack) ? job.jobTrack : inferJobTrack(job.role); }
 
 function readImport() {
@@ -245,19 +250,20 @@ function renderIndustryChart() {
 }
 
 function renderCityChart() {
-  const counts = countBy(jobs.filter(job => getBase(job)), getBase);
+  const counts = Object.fromEntries(cities.map(city => [city, 0]));
+  jobs.forEach(job => getBases(job).forEach(city => { counts[city] += 1; }));
   renderBarChart($('#city-chart'), cities.map(city => [city, counts[city] || 0]));
 }
 
 function renderHeatmap() {
-  const locatedJobs = jobs.filter(job => getBase(job));
+  const locatedJobs = jobs.filter(job => getBases(job).length);
   const container = $('#heatmap');
   if (!locatedJobs.length) {
     container.innerHTML = '<p class="chart-empty">还没有岗位填写 Base 地。编辑岗位并选择城市后，这里会生成行业与城市的交叉分布。</p>';
     return;
   }
   const visibleIndustries = industries.filter(industry => locatedJobs.some(job => getIndustry(job) === industry));
-  const cells = visibleIndustries.flatMap(industry => cities.map(city => locatedJobs.filter(job => getIndustry(job) === industry && getBase(job) === city).length));
+  const cells = visibleIndustries.flatMap(industry => cities.map(city => locatedJobs.filter(job => getIndustry(job) === industry && getBases(job).includes(city)).length));
   const max = Math.max(1, ...cells);
   container.innerHTML = `
     <table class="heatmap-table">
@@ -265,7 +271,7 @@ function renderHeatmap() {
       <thead><tr><th scope="col">行业</th>${cities.map(city => `<th scope="col">${city}</th>`).join('')}</tr></thead>
       <tbody>${visibleIndustries.map(industry => `
         <tr><th scope="row">${industry}</th>${cities.map(city => {
-          const count = locatedJobs.filter(job => getIndustry(job) === industry && getBase(job) === city).length;
+          const count = locatedJobs.filter(job => getIndustry(job) === industry && getBases(job).includes(city)).length;
           const level = count ? Math.max(1, Math.ceil(count / max * 4)) : 0;
           return `<td><span class="heat-cell level-${level}" aria-label="${industry}，${city}，${count} 个岗位">${count}</span></td>`;
         }).join('')}</tr>`).join('')}</tbody>
@@ -357,7 +363,7 @@ function populateProgress() {
 
 function populateTaxonomy() {
   $('#industry').innerHTML = '<option value="">请选择行业</option>' + industries.map(value => `<option>${value}</option>`).join('');
-  $('#base').innerHTML = '<option value="">请选择 Base 地</option>' + cities.map(value => `<option>${value}</option>`).join('');
+  $('#base').innerHTML = '<option value="">请选择 Base 地</option>' + baseOptions.map(value => `<option>${value}</option>`).join('');
   $('#job-track').innerHTML = '<option value="">请选择岗位方向</option>' + jobTracks.map(value => `<option>${value}</option>`).join('');
 }
 
