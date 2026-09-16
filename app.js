@@ -3,10 +3,23 @@ const SYNC_KEY = 'autumn-job-board-sync-v1';
 const stages = ['未投递', '已投递', '测评', '笔试', '一面', '二面', '三面', 'HR 面', 'Offer'];
 const outcomes = ['已挂', '已拒绝', '已接受'];
 const progressOptions = [...stages, ...outcomes];
+const cities = ['上海', '深圳', '杭州', '苏州', '南京'];
+const industries = ['互联网/平台', '智能汽车', '消费电子/智能硬件', '半导体', 'AI/企业软件', '金融科技', '新能源/制造', '其他'];
+const jobTracks = ['AI Agent/大模型', 'AI 应用开发', '后端研发', '产品经理', '通用研发', '其他'];
+const companyIndustries = {
+  '深圳传音控股股份有限公司': '消费电子/智能硬件', '传音': '消费电子/智能硬件',
+  '理想汽车': '智能汽车', '小鹏': '智能汽车', '蔚来': '智能汽车',
+  '华为': '消费电子/智能硬件', '韶音': '消费电子/智能硬件', '联想': '消费电子/智能硬件',
+  'vivo': '消费电子/智能硬件', 'oppo': '消费电子/智能硬件',
+  '科大讯飞': 'AI/企业软件', '帆软': 'AI/企业软件', '长鑫存储': '半导体',
+  '滴滴': '互联网/平台', '得物': '互联网/平台', '去哪儿': '互联网/平台', '虾皮': '互联网/平台',
+  '招银科技': '金融科技', '远景能源': '新能源/制造'
+};
 let jobs = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
 let filter = 'all';
 let searchTerm = '';
 let sort = 'recent';
+let currentView = 'manage';
 const $ = (selector, root = document) => root.querySelector(selector);
 const dialog = $('#job-dialog');
 const syncDialog = $('#sync-dialog');
@@ -34,6 +47,26 @@ function sameJob(left, right) {
   return left.company.trim().toLowerCase() === right.company.trim().toLowerCase()
     && left.role.trim().toLowerCase() === right.role.trim().toLowerCase();
 }
+
+function inferIndustry(company = '') {
+  const normalized = company.trim().toLowerCase();
+  const matched = Object.entries(companyIndustries).find(([name]) => normalized.includes(name.toLowerCase()));
+  return matched?.[1] || '';
+}
+
+function inferJobTrack(role = '') {
+  const normalized = role.toLowerCase();
+  if (/agent|智能体|大模型/.test(normalized)) return 'AI Agent/大模型';
+  if (/产品/.test(normalized)) return '产品经理';
+  if (/后端/.test(normalized)) return '后端研发';
+  if (/ai|算法|智能/.test(normalized)) return 'AI 应用开发';
+  if (/研发|开发|工程师|通软/.test(normalized)) return '通用研发';
+  return '其他';
+}
+
+function getIndustry(job) { return industries.includes(job.industry) ? job.industry : inferIndustry(job.company) || '其他'; }
+function getBase(job) { return cities.includes(job.base) ? job.base : ''; }
+function getJobTrack(job) { return jobTracks.includes(job.jobTrack) ? job.jobTrack : inferJobTrack(job.role); }
 
 function readImport() {
   if (!location.hash.startsWith('#import=')) return null;
@@ -117,7 +150,7 @@ function formatDate(value, includeTime = false) {
 
 function matchesSearch(job) {
   if (!searchTerm) return true;
-  return [job.company, job.role, job.notes, job.nextAction]
+  return [job.company, job.role, job.notes, job.nextAction, getIndustry(job), getBase(job), getJobTrack(job)]
     .some(value => String(value || '').toLowerCase().includes(searchTerm));
 }
 
@@ -148,8 +181,130 @@ function updateCounts() {
   $('#ended-filter-count').textContent = groups.ended;
 }
 
+function countBy(list, getter) {
+  return list.reduce((counts, item) => {
+    const key = getter(item);
+    counts[key] = (counts[key] || 0) + 1;
+    return counts;
+  }, {});
+}
+
+function renderBarChart(element, entries, valueClass = '') {
+  const max = Math.max(1, ...entries.map(([, value]) => value));
+  element.innerHTML = entries.map(([label, value]) => `
+    <div class="chart-row">
+      <div class="bar-meta"><span>${label}</span><strong>${value}</strong></div>
+      <div class="bar-track" role="img" aria-label="${label} ${value} 个岗位">
+        <span class="bar-fill ${valueClass}" style="width:${value ? Math.max(5, value / max * 100) : 0}%"></span>
+      </div>
+    </div>`).join('');
+}
+
+function renderStageChart() {
+  const counts = countBy(jobs, getProgress);
+  const entries = progressOptions.filter(stage => counts[stage]).map(stage => [stage, counts[stage]]);
+  const chart = $('#stage-chart');
+  if (!entries.length) { chart.innerHTML = '<p class="chart-empty">添加岗位后会显示阶段分布。</p>'; return; }
+  const max = Math.max(...entries.map(([, value]) => value));
+  chart.innerHTML = entries.map(([label, value]) => {
+    const group = label === 'Offer' || label === '已接受' ? 'offer' : outcomes.includes(label) ? 'ended' : 'active';
+    return `
+      <div class="chart-row">
+        <div class="bar-meta"><span>${label}</span><strong>${value}</strong></div>
+        <div class="bar-track" role="img" aria-label="${label} ${value} 个岗位">
+          <span class="bar-fill is-${group}" style="width:${Math.max(5, value / max * 100)}%"></span>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function renderIndustryChart() {
+  const rows = industries.map(industry => {
+    const items = jobs.filter(job => getIndustry(job) === industry);
+    const groups = countBy(items, getGroup);
+    return { industry, total: items.length, groups };
+  }).filter(row => row.total).sort((left, right) => right.total - left.total);
+  const chart = $('#industry-chart');
+  if (!rows.length) { chart.innerHTML = '<p class="chart-empty">添加岗位后会显示行业分布。</p>'; return; }
+  const max = Math.max(...rows.map(row => row.total));
+  chart.innerHTML = rows.map(row => {
+    const width = row.total / max * 100;
+    const active = ((row.groups.active || 0) + (row.groups.undelivered || 0)) / row.total * 100;
+    const offer = (row.groups.offer || 0) / row.total * 100;
+    const ended = (row.groups.ended || 0) / row.total * 100;
+    return `
+      <div class="chart-row">
+        <div class="bar-meta"><span>${row.industry}</span><strong>${row.total}</strong></div>
+        <div class="stack-track" role="img" aria-label="${row.industry} ${row.total} 个岗位" style="width:${width}%">
+          <span class="stack-segment is-active" style="width:${active}%"></span>
+          <span class="stack-segment is-offer" style="width:${offer}%"></span>
+          <span class="stack-segment is-ended" style="width:${ended}%"></span>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function renderCityChart() {
+  const counts = countBy(jobs.filter(job => getBase(job)), getBase);
+  renderBarChart($('#city-chart'), cities.map(city => [city, counts[city] || 0]));
+}
+
+function renderHeatmap() {
+  const locatedJobs = jobs.filter(job => getBase(job));
+  const container = $('#heatmap');
+  if (!locatedJobs.length) {
+    container.innerHTML = '<p class="chart-empty">还没有岗位填写 Base 地。编辑岗位并选择城市后，这里会生成行业与城市的交叉分布。</p>';
+    return;
+  }
+  const visibleIndustries = industries.filter(industry => locatedJobs.some(job => getIndustry(job) === industry));
+  const cells = visibleIndustries.flatMap(industry => cities.map(city => locatedJobs.filter(job => getIndustry(job) === industry && getBase(job) === city).length));
+  const max = Math.max(1, ...cells);
+  container.innerHTML = `
+    <table class="heatmap-table">
+      <caption class="sr-only">各行业在五个 Base 地的岗位数量</caption>
+      <thead><tr><th scope="col">行业</th>${cities.map(city => `<th scope="col">${city}</th>`).join('')}</tr></thead>
+      <tbody>${visibleIndustries.map(industry => `
+        <tr><th scope="row">${industry}</th>${cities.map(city => {
+          const count = locatedJobs.filter(job => getIndustry(job) === industry && getBase(job) === city).length;
+          const level = count ? Math.max(1, Math.ceil(count / max * 4)) : 0;
+          return `<td><span class="heat-cell level-${level}" aria-label="${industry}，${city}，${count} 个岗位">${count}</span></td>`;
+        }).join('')}</tr>`).join('')}</tbody>
+    </table>`;
+}
+
+function renderDataQuality() {
+  const missingBase = jobs.filter(job => !getBase(job)).length;
+  const inferredIndustry = jobs.filter(job => !industries.includes(job.industry)).length;
+  const inferredTrack = jobs.filter(job => !jobTracks.includes(job.jobTrack)).length;
+  const duplicateCount = jobs.filter((job, index) => jobs.slice(0, index).some(previous => sameJob(previous, job))).length;
+  const items = [
+    { value: missingBase, label: '条岗位缺少 Base 地', tone: missingBase ? 'warning' : 'good' },
+    { value: inferredIndustry, label: '条行业由公司名称推断', tone: inferredIndustry ? 'neutral' : 'good' },
+    { value: inferredTrack, label: '条岗位方向由名称推断', tone: inferredTrack ? 'neutral' : 'good' },
+    { value: duplicateCount, label: '条疑似重复岗位', tone: duplicateCount ? 'warning' : 'good' }
+  ];
+  $('#data-quality').innerHTML = items.map(item => `
+    <div class="quality-item is-${item.tone}"><strong>${item.value}</strong><span>${item.label}</span></div>`).join('');
+}
+
+function renderAnalytics() {
+  const located = jobs.filter(job => getBase(job)).length;
+  const interviewStages = new Set(['一面', '二面', '三面', 'HR 面', 'Offer', '已接受']);
+  $('#company-count').textContent = new Set(jobs.map(job => job.company.trim().toLowerCase()).filter(Boolean)).size;
+  $('#interview-count').textContent = jobs.filter(job => interviewStages.has(getProgress(job))).length;
+  $('#base-coverage').textContent = jobs.length ? `${Math.round(located / jobs.length * 100)}%` : '0%';
+  $('#base-coverage-detail').textContent = `${located} / ${jobs.length}`;
+  $('#coverage-chip').textContent = `Base 已填写 ${located} / ${jobs.length}`;
+  renderStageChart();
+  renderIndustryChart();
+  renderCityChart();
+  renderHeatmap();
+  renderDataQuality();
+}
+
 function render() {
   updateCounts();
+  renderAnalytics();
   const shown = visibleJobs();
   const list = $('#job-list');
   list.innerHTML = '';
@@ -164,6 +319,7 @@ function render() {
     const group = getGroup(job);
     $('.company', card).textContent = job.company;
     $('.role', card).textContent = job.role;
+    $('.job-meta', card).textContent = [getIndustry(job), getBase(job), getJobTrack(job)].filter(Boolean).join(' · ');
 
     const updatedAt = $('.updated-at', card);
     const updatedText = formatDate(job.updatedAt || job.createdAt);
@@ -199,12 +355,21 @@ function populateProgress() {
   $('#progress').innerHTML = progressOptions.map(value => `<option>${value}</option>`).join('');
 }
 
+function populateTaxonomy() {
+  $('#industry').innerHTML = '<option value="">请选择行业</option>' + industries.map(value => `<option>${value}</option>`).join('');
+  $('#base').innerHTML = '<option value="">请选择 Base 地</option>' + cities.map(value => `<option>${value}</option>`).join('');
+  $('#job-track').innerHTML = '<option value="">请选择岗位方向</option>' + jobTracks.map(value => `<option>${value}</option>`).join('');
+}
+
 function openEditor(job = null, imported = null) {
   const source = job || imported;
   $('#dialog-title').textContent = job ? '编辑岗位' : imported ? '确认导入' : '添加岗位';
   $('#job-id').value = job?.id || '';
   $('#company').value = source?.company || '';
   $('#role').value = source?.role || '';
+  $('#industry').value = source?.industry || inferIndustry(source?.company || '');
+  $('#base').value = source?.base || '';
+  $('#job-track').value = source?.jobTrack || inferJobTrack(source?.role || '');
   $('#url').value = source?.url || '';
   $('#progress').value = source ? getProgress(source) : '未投递';
   $('#next-action').value = source?.nextAction || '';
@@ -228,6 +393,18 @@ function openEditor(job = null, imported = null) {
 
 function closeEditor() { dialog.close(); }
 
+function selectView(view) {
+  currentView = view === 'analytics' ? 'analytics' : 'manage';
+  $('#manage-view').hidden = currentView !== 'manage';
+  $('#analytics-view').hidden = currentView !== 'analytics';
+  document.querySelectorAll('.view-tab').forEach(button => {
+    const selected = button.dataset.view === currentView;
+    button.classList.toggle('is-active', selected);
+    button.setAttribute('aria-selected', String(selected));
+  });
+  if (currentView === 'analytics') renderAnalytics();
+}
+
 function updateSyncPanel() {
   const config = getSyncConfig();
   $('#repository').value = config?.repository || 'zman42586-boop/forjob';
@@ -248,6 +425,7 @@ function selectFilter(nextFilter) {
 
 $('#open-add').addEventListener('click', () => openEditor());
 $('#empty-add').addEventListener('click', () => openEditor());
+document.querySelectorAll('.view-tab').forEach(button => button.addEventListener('click', () => selectView(button.dataset.view)));
 $('#close-dialog').addEventListener('click', closeEditor);
 $('#open-sync').addEventListener('click', () => { updateSyncPanel(); syncDialog.showModal(); });
 $('#close-sync').addEventListener('click', () => syncDialog.close());
@@ -255,6 +433,12 @@ $('#search').addEventListener('input', event => { searchTerm = event.target.valu
 $('#sort').addEventListener('change', event => { sort = event.target.value; render(); });
 $('#clear-filters').addEventListener('click', () => { $('#search').value = ''; searchTerm = ''; selectFilter('all'); });
 document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => selectFilter(button.dataset.filter)));
+$('#company').addEventListener('change', event => {
+  if (!$('#industry').value) $('#industry').value = inferIndustry(event.target.value);
+});
+$('#role').addEventListener('change', event => {
+  if (!$('#job-track').value) $('#job-track').value = inferJobTrack(event.target.value);
+});
 
 $('#sync-form').addEventListener('submit', async event => {
   event.preventDefault();
@@ -289,6 +473,9 @@ $('#job-form').addEventListener('submit', async event => {
     id: id || crypto.randomUUID(),
     company: $('#company').value.trim(),
     role: $('#role').value.trim(),
+    industry: $('#industry').value,
+    base: $('#base').value,
+    jobTrack: $('#job-track').value,
     url: $('#url').value.trim(),
     ...progressFields,
     nextAction: $('#next-action').value.trim(),
@@ -319,9 +506,10 @@ $('#delete-job').addEventListener('click', async () => {
 });
 
 populateProgress();
+populateTaxonomy();
 render();
 loadSharedData().then(() => {
   const imported = readImport();
   if (imported) openEditor(null, imported);
 });
-if ('serviceWorker' in navigator) navigator.serviceWorker.register('./service-worker.js');
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('./service-worker.js').catch(() => {});

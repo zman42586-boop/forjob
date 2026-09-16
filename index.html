@@ -24,55 +24,111 @@
       </div>
     </header>
 
-    <section class="summary" aria-label="投递概览">
-      <article><span>全部岗位</span><strong id="total-count">0</strong></article>
-      <article><span>进行中</span><strong id="active-count">0</strong></article>
-      <article><span>Offer</span><strong id="offer-count">0</strong></article>
-      <article><span>已结束</span><strong id="ended-count">0</strong></article>
-    </section>
+    <nav class="view-tabs" aria-label="页面视图">
+      <button class="view-tab is-active" id="manage-tab" type="button" data-view="manage" aria-controls="manage-view" aria-selected="true">岗位管理</button>
+      <button class="view-tab" id="analytics-tab" type="button" data-view="analytics" aria-controls="analytics-view" aria-selected="false">分析看板</button>
+    </nav>
 
-    <section class="workspace" aria-label="岗位列表">
-      <div class="toolbar">
-        <label class="search-box">
-          <span aria-hidden="true">⌕</span>
-          <span class="sr-only">搜索岗位</span>
-          <input id="search" type="search" placeholder="搜索公司、岗位或备注" autocomplete="off" />
-        </label>
-        <label class="sort-box">
-          <span>排序</span>
-          <select id="sort">
-            <option value="recent">最近更新</option>
-            <option value="stage">阶段靠后</option>
-            <option value="company">公司名称</option>
-          </select>
-        </label>
-      </div>
+    <section id="manage-view" aria-labelledby="manage-tab">
+      <section class="summary" aria-label="投递概览">
+        <article><span>全部岗位</span><strong id="total-count">0</strong></article>
+        <article><span>进行中</span><strong id="active-count">0</strong></article>
+        <article><span>Offer</span><strong id="offer-count">0</strong></article>
+        <article><span>已结束</span><strong id="ended-count">0</strong></article>
+      </section>
 
-      <div class="list-controls">
-        <div class="filters" aria-label="筛选岗位">
-          <button class="filter is-active" type="button" data-filter="all" aria-pressed="true">全部 <span id="all-filter-count">0</span></button>
-          <button class="filter" type="button" data-filter="undelivered" aria-pressed="false">未投递 <span id="undelivered-filter-count">0</span></button>
-          <button class="filter" type="button" data-filter="active" aria-pressed="false">进行中 <span id="active-filter-count">0</span></button>
-          <button class="filter" type="button" data-filter="offer" aria-pressed="false">Offer <span id="offer-filter-count">0</span></button>
-          <button class="filter" type="button" data-filter="ended" aria-pressed="false">已结束 <span id="ended-filter-count">0</span></button>
+      <section class="workspace" aria-label="岗位列表">
+        <div class="toolbar">
+          <label class="search-box">
+            <span aria-hidden="true">⌕</span>
+            <span class="sr-only">搜索岗位</span>
+            <input id="search" type="search" placeholder="搜索公司、岗位或备注" autocomplete="off" />
+          </label>
+          <label class="sort-box">
+            <span>排序</span>
+            <select id="sort">
+              <option value="recent">最近更新</option>
+              <option value="stage">阶段靠后</option>
+              <option value="company">公司名称</option>
+            </select>
+          </label>
         </div>
-        <p class="result-count" id="result-count"></p>
-      </div>
 
-      <section class="job-list" id="job-list" aria-live="polite"></section>
+        <div class="list-controls">
+          <div class="filters" aria-label="筛选岗位">
+            <button class="filter is-active" type="button" data-filter="all" aria-pressed="true">全部 <span id="all-filter-count">0</span></button>
+            <button class="filter" type="button" data-filter="undelivered" aria-pressed="false">未投递 <span id="undelivered-filter-count">0</span></button>
+            <button class="filter" type="button" data-filter="active" aria-pressed="false">进行中 <span id="active-filter-count">0</span></button>
+            <button class="filter" type="button" data-filter="offer" aria-pressed="false">Offer <span id="offer-filter-count">0</span></button>
+            <button class="filter" type="button" data-filter="ended" aria-pressed="false">已结束 <span id="ended-filter-count">0</span></button>
+          </div>
+          <p class="result-count" id="result-count"></p>
+        </div>
 
-      <section class="list-empty" id="list-empty" hidden>
-        <h2>没有符合条件的岗位</h2>
-        <p>换一个关键词或筛选条件试试。</p>
-        <button class="secondary-button" id="clear-filters" type="button">查看全部</button>
+        <section class="job-list" id="job-list" aria-live="polite"></section>
+
+        <section class="list-empty" id="list-empty" hidden>
+          <h2>没有符合条件的岗位</h2>
+          <p>换一个关键词或筛选条件试试。</p>
+          <button class="secondary-button" id="clear-filters" type="button">查看全部</button>
+        </section>
+      </section>
+
+      <section class="empty-state" id="empty-state" hidden>
+        <div class="empty-icon">＋</div>
+        <h2>先添加一个目标岗位</h2>
+        <p>记录公司、岗位和下一步安排，之后从这里统一跟进。</p>
+        <button class="add-button" id="empty-add" type="button"><span aria-hidden="true">＋</span>添加岗位</button>
       </section>
     </section>
 
-    <section class="empty-state" id="empty-state" hidden>
-      <div class="empty-icon">＋</div>
-      <h2>先添加一个目标岗位</h2>
-      <p>记录公司、岗位和下一步安排，之后从这里统一跟进。</p>
-      <button class="add-button" id="empty-add" type="button"><span aria-hidden="true">＋</span>添加岗位</button>
+    <section class="analytics-view" id="analytics-view" aria-labelledby="analytics-tab" hidden>
+      <div class="analytics-heading">
+        <div>
+          <p class="eyebrow">Application insights</p>
+          <h2>投递结构与进展</h2>
+          <p>从行业、Base 地和岗位方向检查投递组合。</p>
+        </div>
+        <span class="coverage-chip" id="coverage-chip"></span>
+      </div>
+
+      <section class="analytics-summary" aria-label="分析概览">
+        <article><span>目标企业</span><strong id="company-count">0</strong><small>去重后</small></article>
+        <article><span>进入面试</span><strong id="interview-count">0</strong><small>当前阶段</small></article>
+        <article><span>Base 完整度</span><strong id="base-coverage">0%</strong><small id="base-coverage-detail">0 / 0</small></article>
+      </section>
+
+      <div class="analytics-grid">
+        <section class="analytics-panel analytics-panel-wide">
+          <div class="panel-heading"><h3>投递阶段</h3><span>当前岗位分布，不代表历史转化率</span></div>
+          <div class="bar-chart stage-chart" id="stage-chart"></div>
+        </section>
+
+        <section class="analytics-panel">
+          <div class="panel-heading"><h3>行业分布</h3><span>颜色表示岗位状态</span></div>
+          <div class="stack-chart" id="industry-chart"></div>
+          <div class="chart-legend" aria-label="状态图例">
+            <span><i class="legend-dot is-active"></i>进行中</span>
+            <span><i class="legend-dot is-offer"></i>Offer</span>
+            <span><i class="legend-dot is-ended"></i>已结束</span>
+          </div>
+        </section>
+
+        <section class="analytics-panel">
+          <div class="panel-heading"><h3>Base 地分布</h3><span>仅统计已填写岗位</span></div>
+          <div class="bar-chart" id="city-chart"></div>
+        </section>
+
+        <section class="analytics-panel analytics-panel-wide">
+          <div class="panel-heading"><h3>行业 × Base 地</h3><span>颜色越深，岗位越集中</span></div>
+          <div class="heatmap-wrap" id="heatmap"></div>
+        </section>
+
+        <section class="analytics-panel analytics-panel-wide data-quality-panel">
+          <div class="panel-heading"><h3>数据提醒</h3><span>补齐信息后图表会自动更新</span></div>
+          <div class="data-quality" id="data-quality"></div>
+        </section>
+      </div>
     </section>
   </main>
 
@@ -85,6 +141,11 @@
       <input id="job-id" type="hidden" />
       <label>企业名称<input id="company" required maxlength="40" placeholder="例如：字节跳动" /></label>
       <label>岗位名称<input id="role" required maxlength="60" placeholder="例如：后端开发工程师" /></label>
+      <div class="form-grid">
+        <label>所属行业<select id="industry" required></select></label>
+        <label>Base 地<select id="base" required></select></label>
+      </div>
+      <label>岗位方向<select id="job-track" required></select></label>
       <label>招聘链接<input id="url" type="url" placeholder="https://...（可不填）" /></label>
       <label>当前状态<select id="progress"></select></label>
       <div class="form-grid">
@@ -122,6 +183,7 @@
       <div class="job-identity">
         <p class="company"></p>
         <h2 class="role"></h2>
+        <p class="job-meta"></p>
         <p class="updated-at"></p>
       </div>
       <div class="job-status"><span class="stage-badge"></span></div>
