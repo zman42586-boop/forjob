@@ -224,58 +224,19 @@ function renderStageChart() {
 }
 
 function renderIndustryChart() {
-  const rows = industries.map(industry => {
-    const items = jobs.filter(job => getIndustry(job) === industry);
-    const groups = countBy(items, getGroup);
-    return { industry, total: items.length, groups };
-  }).filter(row => row.total).sort((left, right) => right.total - left.total);
+  const counts = countBy(jobs, getIndustry);
+  const rows = industries.map(industry => [industry, counts[industry] || 0])
+    .filter(([, total]) => total)
+    .sort((left, right) => right[1] - left[1]);
   const chart = $('#industry-chart');
   if (!rows.length) { chart.innerHTML = '<p class="chart-empty">添加岗位后会显示行业分布。</p>'; return; }
-  const max = Math.max(...rows.map(row => row.total));
-  chart.innerHTML = rows.map(row => {
-    const width = row.total / max * 100;
-    const active = ((row.groups.active || 0) + (row.groups.undelivered || 0)) / row.total * 100;
-    const offer = (row.groups.offer || 0) / row.total * 100;
-    const ended = (row.groups.ended || 0) / row.total * 100;
-    return `
-      <div class="chart-row">
-        <div class="bar-meta"><span>${row.industry}</span><strong>${row.total}</strong></div>
-        <div class="stack-track" role="img" aria-label="${row.industry} ${row.total} 个岗位" style="width:${width}%">
-          <span class="stack-segment is-active" style="width:${active}%"></span>
-          <span class="stack-segment is-offer" style="width:${offer}%"></span>
-          <span class="stack-segment is-ended" style="width:${ended}%"></span>
-        </div>
-      </div>`;
-  }).join('');
+  renderBarChart(chart, rows);
 }
 
 function renderCityChart() {
   const counts = Object.fromEntries(cities.map(city => [city, 0]));
   jobs.forEach(job => getBases(job).forEach(city => { counts[city] += 1; }));
   renderBarChart($('#city-chart'), cities.map(city => [city, counts[city] || 0]));
-}
-
-function renderHeatmap() {
-  const locatedJobs = jobs.filter(job => getBases(job).length);
-  const container = $('#heatmap');
-  if (!locatedJobs.length) {
-    container.innerHTML = '<p class="chart-empty">还没有岗位填写 Base 地。编辑岗位并选择城市后，这里会生成行业与城市的交叉分布。</p>';
-    return;
-  }
-  const visibleIndustries = industries.filter(industry => locatedJobs.some(job => getIndustry(job) === industry));
-  const cells = visibleIndustries.flatMap(industry => cities.map(city => locatedJobs.filter(job => getIndustry(job) === industry && getBases(job).includes(city)).length));
-  const max = Math.max(1, ...cells);
-  container.innerHTML = `
-    <table class="heatmap-table">
-      <caption class="sr-only">各行业在五个 Base 地的岗位数量</caption>
-      <thead><tr><th scope="col">行业</th>${cities.map(city => `<th scope="col">${city}</th>`).join('')}</tr></thead>
-      <tbody>${visibleIndustries.map(industry => `
-        <tr><th scope="row">${industry}</th>${cities.map(city => {
-          const count = locatedJobs.filter(job => getIndustry(job) === industry && getBases(job).includes(city)).length;
-          const level = count ? Math.max(1, Math.ceil(count / max * 4)) : 0;
-          return `<td><span class="heat-cell level-${level}" aria-label="${industry}，${city}，${count} 个岗位">${count}</span></td>`;
-        }).join('')}</tr>`).join('')}</tbody>
-    </table>`;
 }
 
 function renderDataQuality() {
@@ -304,7 +265,6 @@ function renderAnalytics() {
   renderStageChart();
   renderIndustryChart();
   renderCityChart();
-  renderHeatmap();
   renderDataQuality();
 }
 
