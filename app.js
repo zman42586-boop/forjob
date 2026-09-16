@@ -205,6 +205,22 @@ function renderBarChart(element, entries, valueClass = '') {
     </div>`).join('');
 }
 
+function renderColumnChart(element, entries) {
+  const max = Math.max(1, ...entries.map(([, value]) => value));
+  const minWidth = entries.length > 5 ? 560 : 340;
+  element.innerHTML = `
+    <div class="column-bars" style="--column-count:${entries.length};--column-min-width:${minWidth}px">
+      ${entries.map(([label, value]) => `
+        <div class="column-item">
+          <strong class="column-value">${value}</strong>
+          <div class="column-track" role="img" aria-label="${label} ${value} 个岗位">
+            <span class="column-fill" style="height:${value ? Math.max(4, value / max * 100) : 0}%"></span>
+          </div>
+          <span class="column-label">${label}</span>
+        </div>`).join('')}
+    </div>`;
+}
+
 function renderStageChart() {
   const counts = countBy(jobs, getProgress);
   const entries = progressOptions.filter(stage => counts[stage]).map(stage => [stage, counts[stage]]);
@@ -230,13 +246,13 @@ function renderIndustryChart() {
     .sort((left, right) => right[1] - left[1]);
   const chart = $('#industry-chart');
   if (!rows.length) { chart.innerHTML = '<p class="chart-empty">添加岗位后会显示行业分布。</p>'; return; }
-  renderBarChart(chart, rows);
+  renderColumnChart(chart, rows);
 }
 
 function renderCityChart() {
   const counts = Object.fromEntries(cities.map(city => [city, 0]));
   jobs.forEach(job => getBases(job).forEach(city => { counts[city] += 1; }));
-  renderBarChart($('#city-chart'), cities.map(city => [city, counts[city] || 0]));
+  renderColumnChart($('#city-chart'), cities.map(city => [city, counts[city] || 0]));
 }
 
 function renderDataQuality() {
