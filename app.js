@@ -258,21 +258,6 @@ function renderCityChart() {
   renderColumnChart($('#city-chart'), cities.map(city => [city, counts[city] || 0]));
 }
 
-function renderDataQuality() {
-  const missingBase = jobs.filter(job => !getBase(job)).length;
-  const inferredIndustry = jobs.filter(job => !industries.includes(job.industry)).length;
-  const inferredTrack = jobs.filter(job => !jobTracks.includes(job.jobTrack)).length;
-  const duplicateCount = jobs.filter((job, index) => jobs.slice(0, index).some(previous => sameJob(previous, job))).length;
-  const items = [
-    { value: missingBase, label: '条岗位缺少 Base 地', tone: missingBase ? 'warning' : 'good' },
-    { value: inferredIndustry, label: '条行业由公司名称推断', tone: inferredIndustry ? 'neutral' : 'good' },
-    { value: inferredTrack, label: '条岗位方向由名称推断', tone: inferredTrack ? 'neutral' : 'good' },
-    { value: duplicateCount, label: '条疑似重复岗位', tone: duplicateCount ? 'warning' : 'good' }
-  ];
-  $('#data-quality').innerHTML = items.map(item => `
-    <div class="quality-item is-${item.tone}"><strong>${item.value}</strong><span>${item.label}</span></div>`).join('');
-}
-
 function renderAnalytics() {
   const located = jobs.filter(job => getBase(job)).length;
   const interviewStages = new Set(['一面', '二面', '三面', 'HR 面', 'Offer', '已接受']);
@@ -284,7 +269,6 @@ function renderAnalytics() {
   renderStageChart();
   renderIndustryChart();
   renderCityChart();
-  renderDataQuality();
 }
 
 function render() {
