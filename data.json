@@ -1,5 +1,21 @@
 [
   {
+    "id": "7b8e7ce4-df8a-4d5a-8f23-532c8528bb58",
+    "company": "快手",
+    "role": "ai全栈",
+    "industry": "互联网",
+    "base": "杭州",
+    "jobTrack": "其他",
+    "url": "https://campus.kuaishou.cn/recruit/campus/e/#/campus/my-apply",
+    "status": "进行中",
+    "stage": "已投递",
+    "nextAction": "",
+    "nextDate": "",
+    "notes": "",
+    "createdAt": "2026-09-16T11:55:56.941Z",
+    "updatedAt": "2026-09-16T11:55:56.941Z"
+  },
+  {
     "id": "e49e3660-e2da-4dfa-8f03-6ec75c9bea76",
     "company": "途虎养车",
     "role": "AI全栈",
