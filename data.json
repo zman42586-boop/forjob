@@ -1,5 +1,21 @@
 [
   {
+    "id": "285712eb-9d56-4528-bda7-eecf8b5c719e",
+    "company": "Link联洲招聘官网",
+    "role": "后端",
+    "industry": "制造业",
+    "base": "深圳",
+    "jobTrack": "后端研发",
+    "url": "https://join.tplinkglobal.com/personal/delivery_records",
+    "status": "进行中",
+    "stage": "已投递",
+    "nextAction": "",
+    "nextDate": "",
+    "notes": "",
+    "createdAt": "2026-09-16T05:37:06.456Z",
+    "updatedAt": "2026-09-16T05:37:06.456Z"
+  },
+  {
     "id": "57ed803e-2d7a-4bd0-9286-4b5ac4ec2da1",
     "company": "腾讯音乐娱乐招聘",
     "role": "AI应用",
