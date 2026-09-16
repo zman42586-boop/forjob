@@ -1,5 +1,18 @@
 [
   {
+    "id": "57ed803e-2d7a-4bd0-9286-4b5ac4ec2da1",
+    "company": "腾讯音乐娱乐招聘",
+    "role": "AI应用",
+    "url": "https://join.tencentmusic.com/deliver",
+    "status": "进行中",
+    "stage": "已投递",
+    "nextAction": "",
+    "nextDate": "",
+    "notes": "",
+    "createdAt": "2026-09-16T03:01:43.611Z",
+    "updatedAt": "2026-09-16T03:01:43.611Z"
+  },
+  {
     "id": "301dc219-6a7b-43a5-8b37-44e2ab197252",
     "company": "京东",
     "role": "后端",
