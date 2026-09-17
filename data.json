@@ -1,5 +1,21 @@
 [
   {
+    "id": "2ff29265-b02b-42ca-ab9d-68cde7ee5120",
+    "company": "顺丰",
+    "role": "后端开发",
+    "industry": "制造业",
+    "base": "深圳",
+    "jobTrack": "后端研发",
+    "url": "https://campus.sf-express.com/#/personalCenter?activeTab=2",
+    "status": "进行中",
+    "stage": "已投递",
+    "nextAction": "",
+    "nextDate": "",
+    "notes": "",
+    "createdAt": "2026-09-17T14:21:01.543Z",
+    "updatedAt": "2026-09-17T14:21:01.543Z"
+  },
+  {
     "id": "247fb7f1-d6c4-4542-87db-79af767a7629",
     "company": "美团",
     "role": "AI后端",
