@@ -1,21 +1,5 @@
 [
   {
-    "id": "247fb7f1-d6c4-4542-87db-79af767a7629",
-    "company": "美团",
-    "role": "AI后端",
-    "industry": "互联网",
-    "base": "深圳、上海",
-    "jobTrack": "其他",
-    "url": "https://career.meituan.com/web/delivery-confirm?jobUnionId=4151560464&jobShareType=1",
-    "status": "进行中",
-    "stage": "Offer",
-    "nextAction": "",
-    "nextDate": "",
-    "notes": "",
-    "createdAt": "2026-09-17T06:53:06.615Z",
-    "updatedAt": "2026-09-17T06:53:06.615Z"
-  },
-  {
     "id": "3eb707c9-37f6-4b32-9794-eb608dfb7dea",
     "company": "智元AGIBOT！",
     "role": "后端",
@@ -321,13 +305,15 @@
     "role": "ai应用开发",
     "base": "杭州",
     "url": "https://campus.10jqka.com.cn/userCenter/employRecord",
-    "status": "进行中",
+    "status": "已挂",
     "stage": "已投递",
     "nextAction": "",
     "nextDate": "",
     "notes": "",
     "createdAt": "2026-09-10T03:23:02.155Z",
-    "updatedAt": "2026-09-10T03:23:02.155Z"
+    "updatedAt": "2026-09-17T08:31:13.789Z",
+    "industry": "互联网",
+    "jobTrack": "AI 应用开发"
   },
   {
     "id": "031d005e-c698-403a-9331-09eefa51380c",
