@@ -1,5 +1,21 @@
 [
   {
+    "id": "f2288a2b-83af-40a4-ad6c-6c6e2e22447d",
+    "company": "拓竹科技",
+    "role": "AI应用",
+    "industry": "制造业",
+    "base": "上海",
+    "jobTrack": "其他",
+    "url": "https://bambulab.jobs.feishu.cn/campus/resume/applied",
+    "status": "进行中",
+    "stage": "已投递",
+    "nextAction": "",
+    "nextDate": "",
+    "notes": "",
+    "createdAt": "2026-09-17T01:25:31.969Z",
+    "updatedAt": "2026-09-17T01:25:31.969Z"
+  },
+  {
     "id": "7b8e7ce4-df8a-4d5a-8f23-532c8528bb58",
     "company": "快手",
     "role": "ai全栈",
