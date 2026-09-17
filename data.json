@@ -1,5 +1,21 @@
 [
   {
+    "id": "30bcf2a4-4109-4b6b-a135-8d6e637b0d7a",
+    "company": "黑白调",
+    "role": "ai",
+    "industry": "制造业",
+    "base": "深圳",
+    "jobTrack": "其他",
+    "url": "https://app.mokahr.com/campus_apply/heibaidiao/54126#/job/f010d7f9-dada-43c7-b12b-09031f94462d/campus_apply/thanks?jobId=f010d7f9-dada-43c7-b12b-09031f94462d&codeType=2&applyInfo%5BaimStoreId%5D=&applyInfo%5BrecommendCode%5D=DSMuhpXC&candidateName=%E5%BC%A0%E9%AA%8F%E6%9D%B0&candidateId=804832214",
+    "status": "进行中",
+    "stage": "已投递",
+    "nextAction": "",
+    "nextDate": "",
+    "notes": "",
+    "createdAt": "2026-09-17T02:57:17.887Z",
+    "updatedAt": "2026-09-17T02:57:17.887Z"
+  },
+  {
     "id": "17a0c87f-4467-47f4-889e-653644fb5164",
     "company": "商汤科技",
     "role": "AGENT",
