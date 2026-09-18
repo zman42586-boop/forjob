@@ -1,5 +1,21 @@
 [
   {
+    "id": "10e6931c-0153-43e5-a686-526af2d79a68",
+    "company": "深信服",
+    "role": "AI",
+    "industry": "互联网",
+    "base": "深圳",
+    "jobTrack": "其他",
+    "url": "https://app.mokahr.com/campus_apply/sangfor/27944#/job/501affce-d38e-4a4c-8daf-2fd63f4c2d64/campus_apply/thanks?jobId=501affce-d38e-4a4c-8daf-2fd63f4c2d64&applyInfo%5BcampusSiteId%5D=1002&applyInfo%5BaimWorkCity%5D=%E6%B7%B1%E5%9C%B3%E5%B8%82&applyInfo%5BaimDepartmentId%5D=&applyInfo%5BaimStoreId%5D=&candidateName=%E5%BC%A0%E9%AA%8F%E6%9D%B0&candidateId=805798092&pure=1",
+    "status": "进行中",
+    "stage": "已投递",
+    "nextAction": "",
+    "nextDate": "",
+    "notes": "",
+    "createdAt": "2026-09-18T14:06:04.899Z",
+    "updatedAt": "2026-09-18T14:06:04.899Z"
+  },
+  {
     "id": "416a4abb-5afb-46e8-b3b1-c14cd885dc67",
     "company": "图拉斯",
     "role": "投递成功",
