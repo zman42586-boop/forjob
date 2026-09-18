@@ -1,5 +1,21 @@
 [
   {
+    "id": "9fe836d8-5911-44a0-a625-3900645fd964",
+    "company": "恒生校招",
+    "role": "java",
+    "industry": "金融科技",
+    "base": "杭州",
+    "jobTrack": "其他",
+    "url": "https://campus.hundsun.com/form/friendly?fromPage=job&CategoryId=2&recruitTypeName=%E6%A0%A1%E5%9B%AD%E6%8B%9B%E8%81%98&submissionId=127768873",
+    "status": "进行中",
+    "stage": "已投递",
+    "nextAction": "",
+    "nextDate": "",
+    "notes": "",
+    "createdAt": "2026-09-18T03:18:35.675Z",
+    "updatedAt": "2026-09-18T03:18:35.675Z"
+  },
+  {
     "id": "0363eed0-b0be-47e2-a2dc-cb6330539699",
     "company": "波克校园",
     "role": "java",
