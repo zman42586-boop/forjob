@@ -1,5 +1,21 @@
 [
   {
+    "id": "416a4abb-5afb-46e8-b3b1-c14cd885dc67",
+    "company": "图拉斯",
+    "role": "投递成功",
+    "industry": "消费电子/智能硬件",
+    "base": "深圳",
+    "jobTrack": "其他",
+    "url": "https://lanhevip.jobs.feishu.cn/605335/resume/applied",
+    "status": "进行中",
+    "stage": "已投递",
+    "nextAction": "",
+    "nextDate": "",
+    "notes": "",
+    "createdAt": "2026-09-18T06:15:34.207Z",
+    "updatedAt": "2026-09-18T06:15:34.207Z"
+  },
+  {
     "id": "9fe836d8-5911-44a0-a625-3900645fd964",
     "company": "恒生校招",
     "role": "java",
