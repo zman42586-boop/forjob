@@ -1,5 +1,21 @@
 [
   {
+    "id": "98fbdb96-ec68-4aed-9aa7-2f1556518857",
+    "company": "安徽巨一科技",
+    "role": "AI",
+    "industry": "制造业",
+    "base": "南京",
+    "jobTrack": "其他",
+    "url": "https://app.mokahr.com/campus_apply/ahjy/168235#/job/6cda7ddb-80f4-40fe-b647-8ef965211869/campus_apply/thanks?jobId=6cda7ddb-80f4-40fe-b647-8ef965211869&codeType=2&applyInfo%5BaimWorkCity%5D=%E5%90%88%E8%82%A5%E5%B8%82&applyInfo%5BaimStoreId%5D=&applyInfo%5BrecommendCode%5D=DSsfzMvm&candidateName=%E5%BC%A0%E9%AA%8F%E6%9D%B0&candidateId=806037058",
+    "status": "进行中",
+    "stage": "已投递",
+    "nextAction": "",
+    "nextDate": "",
+    "notes": "",
+    "createdAt": "2026-09-19T09:46:37.261Z",
+    "updatedAt": "2026-09-19T09:46:37.261Z"
+  },
+  {
     "id": "7b67333d-874c-453e-9b0d-237b76a863f8",
     "company": "小红书校园招聘",
     "role": "AIOPS",
