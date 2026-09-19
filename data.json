@@ -1,5 +1,21 @@
 [
   {
+    "id": "37a20a9a-3611-4163-b750-c3c5387d909b",
+    "company": "卡尔动力",
+    "role": "投递成功",
+    "industry": "智能汽车",
+    "base": "上海",
+    "jobTrack": "其他",
+    "url": "https://kargobot.jobs.feishu.cn/267069/resume/applied",
+    "status": "进行中",
+    "stage": "已投递",
+    "nextAction": "",
+    "nextDate": "",
+    "notes": "",
+    "createdAt": "2026-09-19T07:15:05.557Z",
+    "updatedAt": "2026-09-19T07:15:05.557Z"
+  },
+  {
     "id": "10e6931c-0153-43e5-a686-526af2d79a68",
     "company": "深信服",
     "role": "AI",
