@@ -1,5 +1,21 @@
 [
   {
+    "id": "7b67333d-874c-453e-9b0d-237b76a863f8",
+    "company": "小红书校园招聘",
+    "role": "AIOPS",
+    "industry": "互联网",
+    "base": "上海",
+    "jobTrack": "其他",
+    "url": "https://job.xiaohongshu.com/campus/record?referer_code=YTR3IXPW530W",
+    "status": "进行中",
+    "stage": "已投递",
+    "nextAction": "",
+    "nextDate": "",
+    "notes": "",
+    "createdAt": "2026-09-19T07:29:34.262Z",
+    "updatedAt": "2026-09-19T07:29:34.262Z"
+  },
+  {
     "id": "37a20a9a-3611-4163-b750-c3c5387d909b",
     "company": "卡尔动力",
     "role": "投递成功",
