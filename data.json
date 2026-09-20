@@ -1,5 +1,21 @@
 [
   {
+    "id": "7280d599-31bf-4171-9e33-2d8d2d637a03",
+    "company": "新大陆科技集团",
+    "role": "java",
+    "industry": "其他",
+    "base": "南京",
+    "jobTrack": "其他",
+    "url": "https://newland.zhiye.com/form/friendly?fromPage=job&CategoryId=2&recruitTypeName=%E6%A0%A1%E5%9B%AD%E6%8B%9B%E8%81%98&submissionId=127823564",
+    "status": "进行中",
+    "stage": "已投递",
+    "nextAction": "",
+    "nextDate": "",
+    "notes": "",
+    "createdAt": "2026-09-20T07:56:01.720Z",
+    "updatedAt": "2026-09-20T07:56:01.720Z"
+  },
+  {
     "id": "8cece809-f723-40c1-90e3-7170e5a0c8a8",
     "company": "58同城",
     "role": "agent",
