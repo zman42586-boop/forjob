@@ -1,5 +1,21 @@
 [
   {
+    "id": "da2232c7-dda6-4ae7-be85-4cb0ab1971fa",
+    "company": "柏楚电子招聘官网",
+    "role": "软件",
+    "industry": "制造业",
+    "base": "上海",
+    "jobTrack": "其他",
+    "url": "https://fscut.zhiye.com/form?fromPage=job&jobAdId=1063c842-77ea-494e-a882-3a63205af72c&userId=125358441",
+    "status": "进行中",
+    "stage": "已投递",
+    "nextAction": "",
+    "nextDate": "",
+    "notes": "",
+    "createdAt": "2026-09-20T13:01:02.231Z",
+    "updatedAt": "2026-09-20T13:01:02.231Z"
+  },
+  {
     "id": "c25a41c0-db8a-4a4f-9e4f-bb5c413c8430",
     "company": "思特威",
     "role": "AI开发",
