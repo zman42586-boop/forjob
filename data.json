@@ -1,5 +1,21 @@
 [
   {
+    "id": "c25a41c0-db8a-4a4f-9e4f-bb5c413c8430",
+    "company": "思特威",
+    "role": "AI开发",
+    "industry": "消费电子/智能硬件",
+    "base": "上海",
+    "jobTrack": "其他",
+    "url": "https://app.mokahr.com/campus_apply/smartsenstech1/56088#/job/9b5324e8-994f-4012-a50d-77be97e647e3/campus_apply/thanks?jobId=9b5324e8-994f-4012-a50d-77be97e647e3&codeType=2&applyInfo%5BaimWorkCity%5D=%E4%B8%8A%E6%B5%B7%E5%B8%82&applyInfo%5BaimStoreId%5D=&applyInfo%5BrecommendCode%5D=DSApvXMh&candidateName=%E5%BC%A0%E9%AA%8F%E6%9D%B0&candidateId=806616798",
+    "status": "进行中",
+    "stage": "已投递",
+    "nextAction": "",
+    "nextDate": "",
+    "notes": "",
+    "createdAt": "2026-09-20T12:51:46.182Z",
+    "updatedAt": "2026-09-20T12:51:46.182Z"
+  },
+  {
     "id": "7280d599-31bf-4171-9e33-2d8d2d637a03",
     "company": "新大陆科技集团",
     "role": "java",
