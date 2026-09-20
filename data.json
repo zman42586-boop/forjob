@@ -1,5 +1,21 @@
 [
   {
+    "id": "8cece809-f723-40c1-90e3-7170e5a0c8a8",
+    "company": "58同城",
+    "role": "agent",
+    "industry": "互联网",
+    "base": "上海",
+    "jobTrack": "其他",
+    "url": "https://app.mokahr.com/campus_apply/58/150953#/job/44e921ec-fedc-47ff-a34c-68408345b4b4/campus_apply/thanks?jobId=44e921ec-fedc-47ff-a34c-68408345b4b4&codeType=2&applyInfo%5BcampusSiteId%5D=96125&applyInfo%5BaimStoreId%5D=&applyInfo%5BrecommendCode%5D=DSqKvhtn&candidateName=%E5%BC%A0%E9%AA%8F%E6%9D%B0&candidateId=806370001",
+    "status": "进行中",
+    "stage": "已投递",
+    "nextAction": "",
+    "nextDate": "",
+    "notes": "",
+    "createdAt": "2026-09-20T06:32:40.766Z",
+    "updatedAt": "2026-09-20T06:32:40.766Z"
+  },
+  {
     "id": "be809638-bc4e-4957-9e3b-679c869933ac",
     "company": "杭州飞步科技股份有限公司",
     "role": "AI全栈",
