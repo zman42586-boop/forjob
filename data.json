@@ -1,5 +1,21 @@
 [
   {
+    "id": "bd2eebeb-cbb7-4879-be7b-2ae9f5a869c7",
+    "company": "水滴校招官网",
+    "role": "ai全栈开发工程师",
+    "industry": "互联网",
+    "base": "深圳",
+    "jobTrack": "其他",
+    "url": "https://wdh.jobs.feishu.cn/345030/resume/applied",
+    "status": "进行中",
+    "stage": "已投递",
+    "nextAction": "",
+    "nextDate": "",
+    "notes": "",
+    "createdAt": "2026-09-21T13:38:41.678Z",
+    "updatedAt": "2026-09-21T13:38:41.678Z"
+  },
+  {
     "id": "584e6db9-6570-42be-8284-4fd3456d4f3a",
     "company": "PDD校园招聘官网",
     "role": "服务端",
