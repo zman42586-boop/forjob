@@ -1,5 +1,21 @@
 [
   {
+    "id": "584e6db9-6570-42be-8284-4fd3456d4f3a",
+    "company": "PDD校园招聘官网",
+    "role": "服务端",
+    "industry": "互联网",
+    "base": "上海",
+    "jobTrack": "其他",
+    "url": "https://careers.pddglobalhr.com/campus/personal-center?t=466zpF7aWc",
+    "status": "进行中",
+    "stage": "已投递",
+    "nextAction": "",
+    "nextDate": "",
+    "notes": "",
+    "createdAt": "2026-09-21T09:27:10.822Z",
+    "updatedAt": "2026-09-21T09:27:10.822Z"
+  },
+  {
     "id": "da2232c7-dda6-4ae7-be85-4cb0ab1971fa",
     "company": "柏楚电子招聘官网",
     "role": "软件",
