@@ -527,12 +527,14 @@
     "base": "上海",
     "url": "https://careers.ctrip.com/#/personal-homepage?recommendCode=NTAW3Fz",
     "status": "进行中",
-    "stage": "已投递",
+    "stage": "一面",
     "nextAction": "",
     "nextDate": "",
     "notes": "",
     "createdAt": "2026-09-14T03:39:40.194Z",
-    "updatedAt": "2026-09-14T03:39:40.194Z"
+    "updatedAt": "2026-09-22T08:04:19.750Z",
+    "industry": "互联网",
+    "jobTrack": "AI Agent/大模型"
   },
   {
     "id": "3c61cc2c-188e-46ae-8f22-a2dc436d3ebb",
