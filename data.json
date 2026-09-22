@@ -1,5 +1,21 @@
 [
   {
+    "id": "c65c1e96-137b-4610-98b6-2b1d3fd7e968",
+    "company": "miHoYo招聘官网",
+    "role": "AI应用",
+    "industry": "互联网",
+    "base": "上海",
+    "jobTrack": "其他",
+    "url": "https://jobs.mihoyo.com/?sharePageId=151853&recommendationCode=TTTGC&isRecommendation=true#/campus/resume/position/preview/9250",
+    "status": "进行中",
+    "stage": "已投递",
+    "nextAction": "",
+    "nextDate": "",
+    "notes": "",
+    "createdAt": "2026-09-22T04:22:01.934Z",
+    "updatedAt": "2026-09-22T04:22:01.934Z"
+  },
+  {
     "id": "d955cbe2-b819-4d78-b5a4-765bc066db54",
     "company": "深圳市路特创新科技有限公司",
     "role": "AI",
