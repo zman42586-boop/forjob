@@ -716,9 +716,15 @@
     "role": "agent开发工程师",
     "base": "南京",
     "url": "https://t6ixa9nyl6.jiandaoyun.com/f/65e1a1308ce7672fded0f0cf?ext=XDUWSK",
-    "status": "进行中",
+    "status": "已挂",
     "stage": "已投递",
-    "notes": ""
+    "notes": "",
+    "industry": "AI/企业软件",
+    "jobTrack": "AI Agent/大模型",
+    "nextAction": "",
+    "nextDate": "",
+    "createdAt": "2026-09-22T03:28:23.417Z",
+    "updatedAt": "2026-09-22T03:28:23.417Z"
   },
   {
     "id": "a561451e-19a2-45d3-b901-4a3da5a0be80",
