@@ -478,12 +478,15 @@
     "role": "AI后端",
     "url": "https://jobs.bytedance.com/campus/position/application?external_referral_code=BEGNWJ8",
     "status": "进行中",
-    "stage": "已投递",
+    "stage": "一面",
     "nextAction": "",
     "nextDate": "",
     "notes": "",
     "createdAt": "2026-09-14T08:28:29.325Z",
-    "updatedAt": "2026-09-14T08:28:29.325Z"
+    "updatedAt": "2026-09-22T03:28:44.978Z",
+    "industry": "互联网",
+    "base": "上海",
+    "jobTrack": "后端研发"
   },
   {
     "id": "ad7bb6ac-9a35-4956-b4e6-ba6cabac6ee1",
