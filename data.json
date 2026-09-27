@@ -1,5 +1,21 @@
 [
   {
+    "id": "ab59dc89-97b9-41b1-aeaf-443c00dbff3d",
+    "company": "途游游戏",
+    "role": "后端",
+    "industry": "互联网",
+    "base": "深圳",
+    "jobTrack": "其他",
+    "url": "https://app.mokahr.com/campus_apply/tuyoogame/146219#/job/a2a7e3db-5d84-4df1-a923-5625344aa512/campus_apply/thanks?jobId=a2a7e3db-5d84-4df1-a923-5625344aa512&codeType=2&applyInfo%5BaimWorkCity%5D=%E6%B7%B1%E5%9C%B3%E5%B8%82&applyInfo%5BaimStoreId%5D=&applyInfo%5BrecommendCode%5D=DSV5ubtj&candidateName=%E5%BC%A0%E9%AA%8F%E6%9D%B0&candidateId=809519448",
+    "status": "进行中",
+    "stage": "已投递",
+    "nextAction": "",
+    "nextDate": "",
+    "notes": "",
+    "createdAt": "2026-09-27T12:30:17.485Z",
+    "updatedAt": "2026-09-27T12:30:17.485Z"
+  },
+  {
     "id": "c65c1e96-137b-4610-98b6-2b1d3fd7e968",
     "company": "miHoYo招聘官网",
     "role": "AI应用",
