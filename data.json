@@ -1,5 +1,21 @@
 [
   {
+    "id": "1e3ad444-8201-4386-aede-8ca46f7272c2",
+    "company": "正浩创新",
+    "role": "后端",
+    "industry": "制造业",
+    "base": "深圳",
+    "jobTrack": "其他",
+    "url": "https://jobs.ecoflow.com/602892/resume/applied",
+    "status": "进行中",
+    "stage": "已投递",
+    "nextAction": "",
+    "nextDate": "",
+    "notes": "",
+    "createdAt": "2026-09-29T09:26:38.487Z",
+    "updatedAt": "2026-09-29T09:26:38.487Z"
+  },
+  {
     "id": "3cbadad3-b644-43cf-8f84-c10864ee4e67",
     "company": "优必选科技",
     "role": "java",
