@@ -751,7 +751,14 @@
     "url": "https://cxmt.zhiye.com/personal/deliveryRecord",
     "status": "进行中",
     "stage": "二面",
-    "notes": ""
+    "notes": "",
+    "industry": "半导体",
+    "base": "上海",
+    "jobTrack": "AI Agent/大模型",
+    "nextAction": "",
+    "nextDate": "",
+    "createdAt": "2026-09-29T05:55:19.363Z",
+    "updatedAt": "2026-09-29T05:55:19.363Z"
   },
   {
     "id": "2fc0ba9b-8c93-4972-a3ab-96d583a0dc07",
