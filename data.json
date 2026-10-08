@@ -815,8 +815,14 @@
     "base": "杭州",
     "url": "https://cmbnt.cmbchina.com/center/history",
     "status": "进行中",
-    "stage": "已投递",
-    "notes": ""
+    "stage": "一面",
+    "notes": "",
+    "industry": "金融科技",
+    "jobTrack": "后端研发",
+    "nextAction": "",
+    "nextDate": "",
+    "createdAt": "2026-10-08T02:32:03.761Z",
+    "updatedAt": "2026-10-08T02:32:05.106Z"
   },
   {
     "id": "c3a3fce1-7a8a-4d64-aa60-dfa86cb03bf2",
