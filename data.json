@@ -560,13 +560,15 @@
     "role": "后端开发",
     "base": "上海",
     "url": "https://jobs.bilibili.com/campus/records?token=45f11334-bfb5-41dd-963d-77f91f0bcda8",
-    "status": "进行中",
+    "status": "已挂",
     "stage": "已投递",
     "nextAction": "",
     "nextDate": "",
     "notes": "",
     "createdAt": "2026-09-14T15:05:39.218Z",
-    "updatedAt": "2026-09-14T15:05:39.218Z"
+    "updatedAt": "2026-10-15T06:21:27.452Z",
+    "industry": "互联网",
+    "jobTrack": "后端研发"
   },
   {
     "id": "e52ed4b0-fe77-4908-852a-93110b19c54d",
