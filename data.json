@@ -731,9 +731,15 @@
     "role": "软件产品经理",
     "base": "深圳",
     "url": "https://app.mokahr.com/campus_apply/aftershokzhr/36940?recommendCode=DSZXFR35#/candidateHome/applications",
-    "status": "进行中",
+    "status": "已挂",
     "stage": "已投递",
-    "notes": ""
+    "notes": "",
+    "industry": "消费电子/智能硬件",
+    "jobTrack": "产品经理",
+    "nextAction": "",
+    "nextDate": "",
+    "createdAt": "2026-10-15T06:21:48.148Z",
+    "updatedAt": "2026-10-15T06:21:48.148Z"
   },
   {
     "id": "8e18d4de-52ec-4c36-9e61-56bef24948ea",
