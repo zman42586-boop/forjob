@@ -650,13 +650,15 @@
     "role": "JAVA后端",
     "base": "深圳",
     "url": "https://app.mokahr.com/campus_apply/shein/2932#/job/a42a007c-2283-408e-9981-b812f804007c/campus_apply/thanks?jobId=a42a007c-2283-408e-9981-b812f804007c&codeType=2&applyInfo%5BaimStoreId%5D=&applyInfo%5BrecommendCode%5D=DST8Ak2S&candidateName=%E5%BC%A0%E9%AA%8F%E6%9D%B0&candidateId=801428963",
-    "status": "进行中",
+    "status": "已挂",
     "stage": "已投递",
     "nextAction": "",
     "nextDate": "",
     "notes": "",
     "createdAt": "2026-09-10T14:42:18.674Z",
-    "updatedAt": "2026-09-10T14:42:18.674Z"
+    "updatedAt": "2026-10-15T06:21:34.872Z",
+    "industry": "互联网",
+    "jobTrack": "后端研发"
   },
   {
     "id": "7ed34ccb-2ab9-4881-a96e-e0ee4960d862",
