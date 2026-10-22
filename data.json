@@ -637,12 +637,14 @@
     "base": "上海",
     "url": "https://poizon.jobs.feishu.cn/578078/resume/applied",
     "status": "进行中",
-    "stage": "已投递",
+    "stage": "一面",
     "nextAction": "",
     "nextDate": "",
     "notes": "",
     "createdAt": "2026-09-10T14:49:04.632Z",
-    "updatedAt": "2026-09-10T14:49:04.632Z"
+    "updatedAt": "2026-10-22T07:52:06.298Z",
+    "industry": "互联网",
+    "jobTrack": "其他"
   },
   {
     "id": "e1358b78-fa53-4582-9807-9d38fc77deb6",
