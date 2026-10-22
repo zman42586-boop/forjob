@@ -758,9 +758,16 @@
     "company": "科大讯飞",
     "role": "ai产品经理",
     "url": "https://iflytek.zhiye.com/personal/deliveryRecord",
-    "status": "进行中",
+    "status": "已挂",
     "stage": "测评",
-    "notes": ""
+    "notes": "",
+    "industry": "AI/企业软件",
+    "base": "上海",
+    "jobTrack": "产品经理",
+    "nextAction": "",
+    "nextDate": "",
+    "createdAt": "2026-10-22T07:54:35.495Z",
+    "updatedAt": "2026-10-22T07:54:35.495Z"
   },
   {
     "id": "cadd8733-0897-4e35-893a-65d50010d60a",
