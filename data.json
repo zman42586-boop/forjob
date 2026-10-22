@@ -609,12 +609,14 @@
     "base": "上海",
     "url": "https://moonton.jobs.feishu.cn/campus/resume/applied",
     "status": "进行中",
-    "stage": "已投递",
+    "stage": "笔试",
     "nextAction": "",
     "nextDate": "",
     "notes": "",
     "createdAt": "2026-09-13T14:57:42.475Z",
-    "updatedAt": "2026-09-13T14:57:42.475Z"
+    "updatedAt": "2026-10-22T07:52:16.775Z",
+    "industry": "互联网",
+    "jobTrack": "后端研发"
   },
   {
     "id": "dcc907bd-fc3b-40a2-9192-d62ad0d7ac28",
