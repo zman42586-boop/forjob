@@ -546,13 +546,15 @@
     "role": "AI agent引擎",
     "base": "深圳",
     "url": "https://campus.game.163.com/app/personal/apply",
-    "status": "进行中",
+    "status": "已挂",
     "stage": "已投递",
     "nextAction": "",
     "nextDate": "",
     "notes": "",
     "createdAt": "2026-09-15T06:12:52.075Z",
-    "updatedAt": "2026-09-15T06:12:52.075Z"
+    "updatedAt": "2026-10-22T07:54:14.737Z",
+    "industry": "互联网",
+    "jobTrack": "AI Agent/大模型"
   },
   {
     "id": "a99f5424-01cf-4e46-8357-9c5dd15f0f35",
