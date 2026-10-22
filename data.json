@@ -688,9 +688,15 @@
     "role": "ai应用",
     "base": "深圳",
     "url": "https://transsion.zhiye.com/personal/deliveryRecord",
-    "status": "进行中",
+    "status": "已挂",
     "stage": "已投递",
-    "notes": ""
+    "notes": "",
+    "industry": "消费电子/智能硬件",
+    "jobTrack": "AI 应用开发",
+    "nextAction": "",
+    "nextDate": "",
+    "createdAt": "2026-10-22T07:54:23.666Z",
+    "updatedAt": "2026-10-22T07:54:23.666Z"
   },
   {
     "id": "517e04cb-0d95-4587-9f1b-c3d54be7ee97",
